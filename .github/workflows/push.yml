@@ -23,7 +23,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@latest
         with:
-          images: my-docker-hub-namespace/my-docker-hub-repository
+          images: alexeyco/yc-toolkit
 
       - name: Build and push Docker image
         uses: docker/build-push-action@latest

@@ -2,9 +2,10 @@ FROM golang:alpine as builder
 
 RUN apk update \
     && apk upgrade \
-    && apk add --no-cache upx \
+    && apk add --no-cache \
+      upx \
     && go install github.com/hairyhenderson/gomplate/v3/cmd/gomplate@latest \
-    && upx -9 -qvfk /go/bin/gomplate \
+    && upx -9 -qvfk /go/bin/gomplate
 
 FROM redocly/openapi-cli:latest
 
@@ -23,7 +24,6 @@ RUN apk update \
       zip \
     && go version \
     && upx --version \
-    && gomplate --version \
     && openapi --version
 
 WORKDIR $GOPATH
